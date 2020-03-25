@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>IoT Dashboard</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/datepicker3.css" rel="stylesheet">
+	<link href="css/styles.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+</head>
+<body>
+	
+	<!--/.sidebar-->
+		
+	<div class="col-lg-12 main">
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="#">
+					<em class="fa fa-home"></em>
+				</a></li>
+				<li class="active">Dashboard</li>
+			</ol>
+		</div><!--/.row-->
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Dashboard</h1>
+			</div>
+		</div><!--/.row-->
+	
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-info">
+					<div class="panel-heading">About</div>
+					<div class="panel-body">
+						<p>
+							This dashboard has been developed as an IoT assignment starting from some an HTML dashboard template under Medialoot license. The value shown are exposed by my REST API that you can find <a href="/swagger">here</a>. This REST interface takes messages from Azure sent to IoT Hub by MQTT devices. Those devices are up to now virtualized and not real devices, huwever they can be easily replaced by real ones. 
+						</p>
+					</div>
+				</div>
+			</div>	
+		</div>
+
+		<div class="panel panel-container">
+			<div class="row">
+				<div class="col-xs-4 col-md-2 col-lg-2 no-padding">
+					<div class="panel panel-teal panel-widget border-right">
+						<div class="row no-padding">
+							<p class="large" id="temperature-value">N/A</p>
+							<div class="text-muted">Temperature</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-4 col-md-2 col-lg-2 no-padding">
+					<div class="panel panel-blue panel-widget border-right">
+						<div class="row no-padding">
+							<p class="large" id="humidity-value">N/A</p>
+							<div class="text-muted">Humidity</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-4 col-md-2 col-lg-2 no-padding">
+					<div class="panel panel-orange panel-widget border-right">
+						<div class="row no-padding">
+							<p class="large" id="wind1-value">N/A</p>
+							<div class="text-muted">Wind direction</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-2 col-lg-2 no-padding">
+					<div class="panel panel-orange panel-widget border-right">
+						<div class="row no-padding">
+							<p class="large" id="wind2-value">N/A</p>
+							<div class="text-muted">Wind intensity</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-2 col-lg-2 no-padding">
+					<div class="panel panel-orange panel-widget border-right">
+						<div class="row no-padding">
+							<p class="large" id="rain-value">N/A</p>
+							<div class="text-muted">Rain</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-md-2 col-lg-2 no-padding">
+					<div class="panel panel-red panel-widget ">
+						<div class="row no-padding">
+							<div class="large" style="padding-top: 5px;">
+								<button type="button" id="update" class="btn btn-lg btn-primary">Update</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><!--/.row-->
+		</div>
+
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						Temperature						
+						<span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<canvas class="main-chart" id="chart-1" height="607" width="1823" style="width: 1459px; height: 486px;"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						Humidity
+						<span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<canvas class="main-chart" id="chart-2" height="607" width="1823" style="width: 1459px; height: 486px;"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>		
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						Wind direction
+						<span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<canvas class="chart" id="chart-3" height="357" width="716" style="width: 573px; height: 286px;"></canvas>						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						Wind intensity
+						<span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<canvas class="chart" id="chart-4" height="357" width="716" style="width: 573px; height: 286px;"></canvas>						</div>
+					</div>
+				</div>
+			</div>
+		</div>		
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						Rain
+						<span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<canvas class="main-chart" id="chart-5" height="607" width="1823" style="width: 1459px; height: 486px;"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>		
+		
+		
+		
+		
+	</div>	<!--/.main-->
+	  
+
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/chart.min.js"></script>
+	<script src="js/chart-data.js"></script>
+	<script src="js/easypiechart.js"></script>
+	<script src="js/easypiechart-data.js"></script>
+	<script src="js/bootstrap-datepicker.js"></script>
+	<script src="js/custom.js"></script>
+	
+	<script>
+
+    var urlList = ["/api/sensors/rg-thermometer/labels",
+                  "/api/sensors/rg-thermometer/values",
+                  "/api/sensors/rg-humidity/labels",
+                  "/api/sensors/rg-humidity/values",
+                  "/api/sensors/rg-wind-direction/labels",
+                  "/api/sensors/rg-wind-direction/values",
+                  "/api/sensors/rg-wind-intensity/labels",
+                  "/api/sensors/rg-wind-intensity/values",
+                  "/api/sensors/rg-rain/labels",
+                  "/api/sensors/rg-rain/values"]
+    var nRequest = [];
+    var nResult =[0,0,0,0,0,0,0,0,0,0];
+    var firstTime=true;
+
+    function loadValues(){
+        for (var i = 0; i < urlList.length; i++) {
+            (function (i) {
+                nRequest[i] = new XMLHttpRequest();
+                nRequest[i].open("GET", urlList[i], true);
+                nRequest[i].onreadystatechange = function (oEvent) {
+                    if (nRequest[i].readyState === 4) {
+                        if (nRequest[i].status === 200) {
+                            nResult[i]=JSON.parse(nRequest[i].response);
+                            if(i==nResult.length-1 && firstTime){
+								updateSingleValues();
+								buildChart();
+                            }
+                        } else {
+                            console.log("Error", nRequest[i].statusText);
+                        }
+                    }
+                };
+                nRequest[i].send(null);
+            })(i);
+        }
+    }
+
+	window.onload = function () {
+        loadValues();
+	};
+
+  function updateSingleValues(){
+    var l1 = nResult[1];
+    $("#temperature-value").text(l1[l1.length-1]+"°C");
+    var l2 = nResult[3];
+    $("#humidity-value").text(l2[l2.length-1]+"%");
+    var l3 = nResult[5];
+    $("#wind1-value").text(l3[l3.length-1]+"°");
+    var l4 = nResult[7];
+    $("#wind2-value").text(l4[l4.length-1]+"m/s");
+    var l5 = nResult[9];
+    $("#rain-value").text(l4[l4.length-1]+"mm/h");
+
+  }
+
+	function buildChart(){
+
+		var chartData1 = {
+			labels : nResult[0],
+			datasets : [
+				{
+					label: "Temperature",
+					fillColor : "rgba(48, 164, 255, 0.2)",
+					strokeColor : "rgba(48, 164, 255, 1)",
+					pointColor : "rgba(48, 164, 255, 1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(48, 164, 255, 1)",
+					data : nResult[1]
+				}
+			]
+		}
+		var chartData2 = {
+			labels : nResult[2],
+			datasets : [
+				{
+					label: "Humidity",
+					fillColor : "rgba(48, 164, 255, 0.2)",
+					strokeColor : "rgba(48, 164, 255, 1)",
+					pointColor : "rgba(48, 164, 255, 1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(48, 164, 255, 1)",
+					data : nResult[3]
+				}
+			]
+		}
+		var chartData3 = {
+			labels : nResult[4],
+			datasets : [
+				{
+					label: "Wind Direction",
+					fillColor : "rgba(48, 164, 255, 0.2)",
+					strokeColor : "rgba(48, 164, 255, 1)",
+					pointColor : "rgba(48, 164, 255, 1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(48, 164, 255, 1)",
+					data : nResult[5]
+				}
+			]
+		}
+		var chartData4 = {
+			labels : nResult[6],
+			datasets : [
+				{
+					label: "Wind Intensity",
+					fillColor : "rgba(48, 164, 255, 0.2)",
+					strokeColor : "rgba(48, 164, 255, 1)",
+					pointColor : "rgba(48, 164, 255, 1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(48, 164, 255, 1)",
+					data : nResult[7]
+				}
+			]
+		}
+		var chartData5 = {
+			labels : nResult[8],
+			datasets : [
+				{
+					label: "Rain",
+					fillColor : "rgba(48, 164, 255, 0.2)",
+					strokeColor : "rgba(48, 164, 255, 1)",
+					pointColor : "rgba(48, 164, 255, 1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(48, 164, 255, 1)",
+					data : nResult[9]
+				}
+			]
+		}
+
+		var chart1 = document.getElementById("chart-1").getContext("2d");
+		window.myLine = new Chart(chart1).Line(chartData1, {
+		responsive: true,
+		scaleLineColor: "rgba(0,0,0,.2)",
+		scaleGridLineColor: "rgba(0,0,0,.05)",
+		scaleFontColor: "#c5c7cc"
+		});
+		var chart2 = document.getElementById("chart-2").getContext("2d");
+		window.myBar = new Chart(chart2).Bar(chartData2, {
+		responsive: true,
+		scaleLineColor: "rgba(0,0,0,.2)",
+		scaleGridLineColor: "rgba(0,0,0,.05)",
+		scaleFontColor: "#c5c7cc"
+		});
+		var chart3 = document.getElementById("chart-3").getContext("2d");
+		window.myLine = new Chart(chart3).Line(chartData3, {
+		responsive: true,
+		scaleLineColor: "rgba(0,0,0,.2)",
+		scaleGridLineColor: "rgba(0,0,0,.05)",
+		scaleFontColor: "#c5c7cc"
+		});
+		var chart4 = document.getElementById("chart-4").getContext("2d");
+		window.myBar = new Chart(chart4).Bar(chartData4, {
+		responsive: true,
+		scaleLineColor: "rgba(0,0,0,.2)",
+		scaleGridLineColor: "rgba(0,0,0,.05)",
+		scaleFontColor: "#c5c7cc"
+		});
+		var chart5 = document.getElementById("chart-5").getContext("2d");
+		window.myBar = new Chart(chart5).Line(chartData5, {
+		responsive: true,
+		scaleLineColor: "rgba(0,0,0,.2)",
+		scaleGridLineColor: "rgba(0,0,0,.05)",
+		scaleFontColor: "#c5c7cc"
+		});
+	}
+
+  document.getElementById('update').addEventListener('click', function () {
+			loadValues();
+			updateSingleValues();
+			window.myLine.update();
+		});
+
+	</script>	
+
+</body></html>

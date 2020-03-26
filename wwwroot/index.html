@@ -205,6 +205,7 @@
                         if (nRequest[i].status === 200) {
                             nResult[i]=JSON.parse(nRequest[i].response);
                             if(i==nResult.length-1 && firstTime){
+
 								updateSingleValues();
 								buildChart();
                             }
@@ -224,16 +225,25 @@
 
   function updateSingleValues(){
     var l1 = nResult[1];
-    $("#temperature-value").text(l1[l1.length-1]+"°C");
+    if(l1.length>0){
+    	$("#temperature-value").text(l1[l1.length-1]+"°C");
+    }
     var l2 = nResult[3];
-    $("#humidity-value").text(l2[l2.length-1]+"%");
+    if(l2.length>0){   
+	    $("#humidity-value").text(l2[l2.length-1]+"%");
+	}
     var l3 = nResult[5];
-    $("#wind1-value").text(l3[l3.length-1]+"°");
+    if(l3.length>0){
+    	$("#wind1-value").text(l3[l3.length-1]+"°");
+    }
     var l4 = nResult[7];
-    $("#wind2-value").text(l4[l4.length-1]+"m/s");
+    if(l4.length>0){
+    	$("#wind2-value").text(l4[l4.length-1]+"m/s");
+    }
     var l5 = nResult[9];
-    $("#rain-value").text(l4[l4.length-1]+"mm/h");
-
+    if(l5.length>0){
+    	$("#rain-value").text(l4[l4.length-1]+"mm/h");
+    }
   }
 
 	function buildChart(){

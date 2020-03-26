@@ -18,3 +18,5 @@ This is the first assignent of IOT course for Engineering in Computer Science, S
 Youtube demo: https://youtu.be/dNlqYiPIsmw
 
 A little tutorial: https://www.hackster.io/sfoti96/azure-iot-mqtt-devices-dashboard-e812ba
+
+The sender code: https://github.com/stefanofoti/iot-sender-1

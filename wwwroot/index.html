@@ -181,21 +181,62 @@
 	
 	<script>
 
-    var urlList = ["/api/sensors/rg-thermometer/labels",
-                  "/api/sensors/rg-thermometer/values",
+	var endPoint = "/api/sensors/"
+
+    /*var urlList = ["/api/sensors/rg-thermometer/labels",
+                  "/api/sensors/rg-thermometer/all-values",
                   "/api/sensors/rg-humidity/labels",
-                  "/api/sensors/rg-humidity/values",
+                  "/api/sensors/rg-humidity/all-values",
                   "/api/sensors/rg-wind-direction/labels",
-                  "/api/sensors/rg-wind-direction/values",
+                  "/api/sensors/rg-wind-direction/all-values",
                   "/api/sensors/rg-wind-intensity/labels",
-                  "/api/sensors/rg-wind-intensity/values",
+                  "/api/sensors/rg-wind-intensity/all-values",
                   "/api/sensors/rg-rain/labels",
-                  "/api/sensors/rg-rain/values"]
-    var nRequest = [];
-    var nResult =[0,0,0,0,0,0,0,0,0,0];
+                  "/api/sensors/rg-rain/all-values"]*/
+    
+	var nRequest = [];
+    var nResult =[];
     var firstTime=true;
+	var names = [];
+	var urlList = [];
+	var labels = "";
+
+    function load(){
+		var req = new XMLHttpRequest();
+		req.open("GET", endPoint, true);
+		req.onreadystatechange = function (oEvent) {
+			if (req.readyState === 4) {
+				if (req.status === 200) {
+					names=JSON.parse(req.response);
+					for(var i = 0; i < names.length; i++){
+						urlList[i]=endPoint+names[i]+"/all-values";
+					}
+					loadValues();
+				} else {
+					console.log("Error", req.statusText);
+				}
+			}
+		};
+		req.send(null);
+    }
+
+	function loadLabels(){
+		var req = new XMLHttpRequest();
+		req.open("GET", endPoint+names[0]+"/labels", true);
+		req.onreadystatechange = function (oEvent) {
+			if (req.readyState === 4) {
+				if (req.status === 200) {
+					labels=JSON.parse(req.response);
+				} else {
+					console.log("Error", req.statusText);
+				}
+			}
+		};
+		req.send(null);
+    }
 
     function loadValues(){
+		loadLabels();
         for (var i = 0; i < urlList.length; i++) {
             (function (i) {
                 nRequest[i] = new XMLHttpRequest();
@@ -204,8 +245,7 @@
                     if (nRequest[i].readyState === 4) {
                         if (nRequest[i].status === 200) {
                             nResult[i]=JSON.parse(nRequest[i].response);
-                            if(i==nResult.length-1 && firstTime){
-
+                            if(i==urlList.length-1 && firstTime){
 								updateSingleValues();
 								buildChart();
                             }
@@ -220,27 +260,27 @@
     }
 
 	window.onload = function () {
-        loadValues();
+		load();
 	};
 
   function updateSingleValues(){
-    var l1 = nResult[1];
+    var l1 = nResult[1][0];
     if(l1.length>0){
     	$("#temperature-value").text(l1[l1.length-1]+"°C");
     }
-    var l2 = nResult[3];
+    var l2 = nResult[1][1];
     if(l2.length>0){   
 	    $("#humidity-value").text(l2[l2.length-1]+"%");
 	}
-    var l3 = nResult[5];
+    var l3 = nResult[1][2];
     if(l3.length>0){
     	$("#wind1-value").text(l3[l3.length-1]+"°");
     }
-    var l4 = nResult[7];
+    var l4 = nResult[1][3];
     if(l4.length>0){
     	$("#wind2-value").text(l4[l4.length-1]+"m/s");
     }
-    var l5 = nResult[9];
+    var l5 = nResult[1][4];
     if(l5.length>0){
     	$("#rain-value").text(l4[l4.length-1]+"mm/h");
     }
@@ -249,7 +289,7 @@
 	function buildChart(){
 
 		var chartData1 = {
-			labels : nResult[0],
+			labels : labels,
 			datasets : [
 				{
 					label: "Temperature",
@@ -259,12 +299,22 @@
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
 					pointHighlightStroke : "rgba(48, 164, 255, 1)",
-					data : nResult[1]
+					data : nResult[1][0]
+				},
+				{
+					label: "Temperature",
+					fillColor : "rgba(220,220,220,0.2)",
+					strokeColor : "rgba(220,220,220,1)",
+					pointColor : "rgba(220,220,220,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(220,220,220,1)",
+					data : nResult[2][0]
 				}
 			]
 		}
 		var chartData2 = {
-			labels : nResult[2],
+			labels : labels,
 			datasets : [
 				{
 					label: "Humidity",
@@ -274,27 +324,47 @@
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
 					pointHighlightStroke : "rgba(48, 164, 255, 1)",
-					data : nResult[3]
+					data : nResult[1][1]
+				},
+				{
+					label: "Humidity",
+					fillColor : "rgba(220,220,220,0.2)",
+					strokeColor : "rgba(220,220,220,1)",
+					pointColor : "rgba(220,220,220,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(220,220,220,1)",
+					data : nResult[2][1]
 				}
 			]
 		}
 		var chartData3 = {
-			labels : nResult[4],
+			labels : labels,
 			datasets : [
 				{
 					label: "Wind Direction",
-					fillColor : "rgba(48, 164, 255, 0.2)",
-					strokeColor : "rgba(48, 164, 255, 1)",
-					pointColor : "rgba(48, 164, 255, 1)",
+					fillColor : "rgba(220,220,220,0.2)",
+					strokeColor : "rgba(220,220,220,1)",
+					pointColor : "rgba(220,220,220,1)",
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
-					pointHighlightStroke : "rgba(48, 164, 255, 1)",
-					data : nResult[5]
+					pointHighlightStroke : "rgba(220,220,220,1)",
+					data : nResult[1][2]
+				},
+				{
+					label: "Wind Direction",
+					fillColor : "rgba(220,220,220,0.2)",
+					strokeColor : "rgba(220,220,220,1)",
+					pointColor : "rgba(220,220,220,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(220,220,220,1)",
+					data : nResult[2][2]
 				}
 			]
 		}
 		var chartData4 = {
-			labels : nResult[6],
+			labels : labels,
 			datasets : [
 				{
 					label: "Wind Intensity",
@@ -304,12 +374,22 @@
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
 					pointHighlightStroke : "rgba(48, 164, 255, 1)",
-					data : nResult[7]
+					data : nResult[1][3]
+				},
+				{
+					label: "Wind Intensity",
+					fillColor : "rgba(220,220,220,0.2)",
+					strokeColor : "rgba(220,220,220,1)",
+					pointColor : "rgba(220,220,220,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(220,220,220,1)",
+					data : nResult[2][3]
 				}
 			]
 		}
 		var chartData5 = {
-			labels : nResult[8],
+			labels : labels,
 			datasets : [
 				{
 					label: "Rain",
@@ -319,7 +399,17 @@
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
 					pointHighlightStroke : "rgba(48, 164, 255, 1)",
-					data : nResult[9]
+					data : nResult[1][4]
+				},
+				{
+					label: "Rain",
+					fillColor : "rgba(220,220,220,0.2)",
+					strokeColor : "rgba(220,220,220,1)",
+					pointColor : "rgba(220,220,220,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(220,220,220,1)",
+					data : nResult[2][4]
 				}
 			]
 		}

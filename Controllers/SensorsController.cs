@@ -7,6 +7,12 @@ namespace IotWork.Controllers
     [Route("api/[controller]")] 
     public class SensorsController : Controller
     {
+        // GET api/sensors/sensorID
+        [HttpGet()]
+        public string GetSensorsNames()
+        {
+            return Program.getInstance().GetSensorsData().GetSensorsNames();
+        }
 
         // GET api/sensors/sensorID
         [HttpGet("{sensorID}/values")]
@@ -33,6 +39,19 @@ namespace IotWork.Controllers
             //}
             //return di.getValue();
             string m = Program.getInstance().GetSensorsData().GetLastValueForSensor(sensorID);
+            return m;
+        }
+
+        // GET api/sensors/sensorID
+        [HttpGet("{sensorID}/all-values")]
+        public string GetAllLastValues(string sensorID)
+        {
+            //DataItem di = Program.getInstance().GetSensorsData().getLastItem("thermo");
+            //if(di==null){
+            //    return "Not found";
+            //}
+            //return di.getValue();
+            string m = Program.getInstance().GetSensorsData().GetAllValues(sensorID);
             return m;
         }
 

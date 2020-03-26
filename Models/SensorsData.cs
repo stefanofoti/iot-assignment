@@ -76,6 +76,11 @@ namespace IotWork.Models
                 IDictionary<String, String> values = JsonConvert.DeserializeObject<Dictionary<string, string>>(Encoding.UTF8.GetString(ed.Body.Array));
                 if(values.ContainsKey("messageId")) dataItem.setMessageId(values["messageId"]);
                 if(values.ContainsKey("value")) dataItem.setValue(values["value"]);
+                if(values.ContainsKey("temperature")) dataItem.setTemperature(float.Parse(values["temperature"]));
+                if(values.ContainsKey("humidity")) dataItem.setHumidity(float.Parse(values["humidity"]));
+                if(values.ContainsKey("windIntensity")) dataItem.setWindIntensity(float.Parse(values["windIntensity"]));
+                if(values.ContainsKey("windDirection")) dataItem.setWindDirection(float.Parse(values["windDirection"]));
+                if(values.ContainsKey("rain")) dataItem.setRain(float.Parse(values["rain"]));
             }
             Console.WriteLine("+-- returning data item");
             return dataItem;
@@ -85,9 +90,35 @@ namespace IotWork.Models
             IList<float> output = new List<float>();
             if(mainDictionary.ContainsKey(sensor)){
                 IList<DataItem> list = mainDictionary[sensor];
-                foreach (DataItem item in list){  
+                foreach (DataItem item in list){
                     output.Add(float.Parse(item.getValue()));
                 }
+                return JsonConvert.SerializeObject(output);
+            }
+            return "[]";
+        }
+
+        public String GetAllValues(String sensor){
+            IList<IList<float>> output = new List<IList<float>>();
+            IList<float> temperatures = new List<float>();
+            IList<float> humidities = new List<float>();
+            IList<float> windDirections = new List<float>();
+            IList<float> windIntensities = new List<float>();
+            IList<float> rains = new List<float>();
+            if(mainDictionary.ContainsKey(sensor)){
+                IList<DataItem> list = mainDictionary[sensor];
+                foreach (DataItem item in list){
+                    temperatures.Add(item.getTemperature());
+                    humidities.Add(item.getHumidity());
+                    windDirections.Add(item.getWindDirection());
+                    windIntensities.Add(item.getWindIntensity());
+                    rains.Add(item.getRain());
+                }
+                output.Add(temperatures);
+                output.Add(humidities);
+                output.Add(windDirections);
+                output.Add(windIntensities);
+                output.Add(rains);
                 return JsonConvert.SerializeObject(output);
             }
             return "[]";
@@ -104,6 +135,10 @@ namespace IotWork.Models
             }
             return "[]";
         }
+        public String GetSensorsNames(){
+            return JsonConvert.SerializeObject(mainDictionary.Keys);
+        }
+
 
     }
 }

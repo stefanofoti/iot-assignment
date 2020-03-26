@@ -3,23 +3,18 @@ languages:
 - csharp
 - aspx-csharp
 page_type: sample
-description: "This is a sample application that you can use to follow along with the Run a RESTful API with CORS in Azure App Service tutorial."
+description: "IoT first assignment"
 products:
 - azure
 - aspnet-core
 - azure-app-service
+- azure-iot-hub
 ---
 
-# ASP.NET Core API sample for Azure App Service
+# IoT first assignment
 
-This is a sample application that you can use to follow along with the tutorial at 
-[Run a RESTful API with CORS in Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-rest-api). 
+This is the first assignent of IOT course for Engineering in Computer Science, Sapienza University of Rome.
 
-## License
+Youtube demo: https://youtu.be/dNlqYiPIsmw
 
-See [LICENSE](https://github.com/Azure-Samples/iot-first/blob/master/LICENSE.md).
-
-## Contributing
-
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
-  
+A little tutorial: https://www.hackster.io/sfoti96/azure-iot-mqtt-devices-dashboard-e812ba

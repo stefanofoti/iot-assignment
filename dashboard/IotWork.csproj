@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.4" /> 
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="2.0.0" />
     <!--PackageReference Include="WindowsAzure.ServiceBus" Version="6.0.1" /-->
     <PackageReference Include="Microsoft.Azure.Devices.Client" Version="1.24.0" />

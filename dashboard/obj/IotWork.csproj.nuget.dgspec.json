@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\fotis\\Desktop\\azure-rest\\iot-first\\IotWork.csproj": {}
+    "C:\\Users\\fotis\\Desktop\\IOT\\assignment-1\\azure-rest\\iot-assignment-1\\dashboard\\IotWork.csproj": {}
   },
   "projects": {
-    "C:\\Users\\fotis\\Desktop\\azure-rest\\iot-first\\IotWork.csproj": {
+    "C:\\Users\\fotis\\Desktop\\IOT\\assignment-1\\azure-rest\\iot-assignment-1\\dashboard\\IotWork.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\fotis\\Desktop\\azure-rest\\iot-first\\IotWork.csproj",
+        "projectUniqueName": "C:\\Users\\fotis\\Desktop\\IOT\\assignment-1\\azure-rest\\iot-assignment-1\\dashboard\\IotWork.csproj",
         "projectName": "IotWork",
-        "projectPath": "C:\\Users\\fotis\\Desktop\\azure-rest\\iot-first\\IotWork.csproj",
+        "projectPath": "C:\\Users\\fotis\\Desktop\\IOT\\assignment-1\\azure-rest\\iot-assignment-1\\dashboard\\IotWork.csproj",
         "packagesPath": "C:\\Users\\fotis\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\fotis\\Desktop\\azure-rest\\iot-first\\obj\\",
+        "outputPath": "C:\\Users\\fotis\\Desktop\\IOT\\assignment-1\\azure-rest\\iot-assignment-1\\dashboard\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

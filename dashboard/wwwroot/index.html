@@ -264,23 +264,23 @@
 	};
 
   function updateSingleValues(){
-    var l1 = nResult[1][0];
+    var l1 = nResult[0][0];
     if(l1.length>0){
     	$("#temperature-value").text(l1[l1.length-1]+"°C");
     }
-    var l2 = nResult[1][1];
+    var l2 = nResult[0][1];
     if(l2.length>0){   
 	    $("#humidity-value").text(l2[l2.length-1]+"%");
 	}
-    var l3 = nResult[1][2];
+    var l3 = nResult[0][2];
     if(l3.length>0){
     	$("#wind1-value").text(l3[l3.length-1]+"°");
     }
-    var l4 = nResult[1][3];
+    var l4 = nResult[0][3];
     if(l4.length>0){
     	$("#wind2-value").text(l4[l4.length-1]+"m/s");
     }
-    var l5 = nResult[1][4];
+    var l5 = nResult[0][4];
     if(l5.length>0){
     	$("#rain-value").text(l4[l4.length-1]+"mm/h");
     }
@@ -299,7 +299,7 @@
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
 					pointHighlightStroke : "rgba(48, 164, 255, 1)",
-					data : nResult[1][0]
+					data : nResult[0][0]
 				},
 				{
 					label: "Temperature",
@@ -309,7 +309,7 @@
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
 					pointHighlightStroke : "rgba(220,220,220,1)",
-					data : nResult[2][0]
+					data : nResult[1][0]
 				}
 			]
 		}
@@ -324,7 +324,7 @@
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
 					pointHighlightStroke : "rgba(48, 164, 255, 1)",
-					data : nResult[1][1]
+					data : nResult[0][1]
 				},
 				{
 					label: "Humidity",
@@ -334,7 +334,7 @@
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
 					pointHighlightStroke : "rgba(220,220,220,1)",
-					data : nResult[2][1]
+					data : nResult[1][1]
 				}
 			]
 		}
@@ -343,13 +343,13 @@
 			datasets : [
 				{
 					label: "Wind Direction",
-					fillColor : "rgba(220,220,220,0.2)",
-					strokeColor : "rgba(220,220,220,1)",
-					pointColor : "rgba(220,220,220,1)",
+					fillColor : "rgba(48, 164, 255, 0.2)",
+					strokeColor : "rgba(48, 164, 255, 1)",
+					pointColor : "rgba(48, 164, 255, 1)",
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
-					pointHighlightStroke : "rgba(220,220,220,1)",
-					data : nResult[1][2]
+					pointHighlightStroke : "rgba(48, 164, 255, 1)",
+					data : nResult[0][2]
 				},
 				{
 					label: "Wind Direction",
@@ -359,7 +359,7 @@
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
 					pointHighlightStroke : "rgba(220,220,220,1)",
-					data : nResult[2][2]
+					data : nResult[1][2]
 				}
 			]
 		}
@@ -374,7 +374,7 @@
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
 					pointHighlightStroke : "rgba(48, 164, 255, 1)",
-					data : nResult[1][3]
+					data : nResult[0][3]
 				},
 				{
 					label: "Wind Intensity",
@@ -384,7 +384,7 @@
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
 					pointHighlightStroke : "rgba(220,220,220,1)",
-					data : nResult[2][3]
+					data : nResult[1][3]
 				}
 			]
 		}
@@ -399,7 +399,7 @@
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
 					pointHighlightStroke : "rgba(48, 164, 255, 1)",
-					data : nResult[1][4]
+					data : nResult[0][4]
 				},
 				{
 					label: "Rain",
@@ -409,7 +409,7 @@
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
 					pointHighlightStroke : "rgba(220,220,220,1)",
-					data : nResult[2][4]
+					data : nResult[1][4]
 				}
 			]
 		}

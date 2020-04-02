@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kbZLN4NvgoK7GCeIu2lIq4fEMVc5JKmMx2iZOLUSxGF9u9rBdzACJSJaEzvHXmEGpErgtroi55hqyNZcRUp7pw==",
+  "dgSpecHash": "pjXH6kaKLWaiqLbPiUjDuUUl6mx0nWzo+CGzanJhRe1O4Wjl5A2bU7Ozv7/ad9osbvhb3pwJYcuUPL8SZf4FQQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\fotis\\Desktop\\azure-rest\\iot-first\\IotWork.csproj",
+  "projectFilePath": "C:\\Users\\fotis\\Desktop\\IOT\\assignment-1\\azure-rest\\iot-assignment-1\\dashboard\\IotWork.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\fotis\\.nuget\\packages\\dotnetty.buffers\\0.6.0\\dotnetty.buffers.0.6.0.nupkg.sha512",
     "C:\\Users\\fotis\\.nuget\\packages\\dotnetty.codecs\\0.6.0\\dotnetty.codecs.0.6.0.nupkg.sha512",

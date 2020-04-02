@@ -12,3 +12,17 @@ C:\Users\fotis\Desktop\azure-rest\iot-first\obj\Debug\netcoreapp2.0\IotWork.Asse
 C:\Users\fotis\Desktop\azure-rest\iot-first\obj\Debug\netcoreapp2.0\IotWork.dll
 C:\Users\fotis\Desktop\azure-rest\iot-first\obj\Debug\netcoreapp2.0\IotWork.pdb
 C:\Users\fotis\Desktop\azure-rest\iot-first\obj\Debug\netcoreapp2.0\IotWork.genruntimeconfig.cache
+C:\Users\fotis\Desktop\IOT\assignment-1\azure-rest\iot-assignment-1\dashboard\bin\Debug\netcoreapp2.0\appsettings.Development.json
+C:\Users\fotis\Desktop\IOT\assignment-1\azure-rest\iot-assignment-1\dashboard\bin\Debug\netcoreapp2.0\appsettings.json
+C:\Users\fotis\Desktop\IOT\assignment-1\azure-rest\iot-assignment-1\dashboard\bin\Debug\netcoreapp2.0\IotWork.deps.json
+C:\Users\fotis\Desktop\IOT\assignment-1\azure-rest\iot-assignment-1\dashboard\bin\Debug\netcoreapp2.0\IotWork.runtimeconfig.json
+C:\Users\fotis\Desktop\IOT\assignment-1\azure-rest\iot-assignment-1\dashboard\bin\Debug\netcoreapp2.0\IotWork.runtimeconfig.dev.json
+C:\Users\fotis\Desktop\IOT\assignment-1\azure-rest\iot-assignment-1\dashboard\bin\Debug\netcoreapp2.0\IotWork.dll
+C:\Users\fotis\Desktop\IOT\assignment-1\azure-rest\iot-assignment-1\dashboard\bin\Debug\netcoreapp2.0\IotWork.pdb
+C:\Users\fotis\Desktop\IOT\assignment-1\azure-rest\iot-assignment-1\dashboard\obj\Debug\netcoreapp2.0\IotWork.csprojAssemblyReference.cache
+C:\Users\fotis\Desktop\IOT\assignment-1\azure-rest\iot-assignment-1\dashboard\obj\Debug\netcoreapp2.0\IotWork.csproj.CoreCompileInputs.cache
+C:\Users\fotis\Desktop\IOT\assignment-1\azure-rest\iot-assignment-1\dashboard\obj\Debug\netcoreapp2.0\IotWork.AssemblyInfoInputs.cache
+C:\Users\fotis\Desktop\IOT\assignment-1\azure-rest\iot-assignment-1\dashboard\obj\Debug\netcoreapp2.0\IotWork.AssemblyInfo.cs
+C:\Users\fotis\Desktop\IOT\assignment-1\azure-rest\iot-assignment-1\dashboard\obj\Debug\netcoreapp2.0\IotWork.dll
+C:\Users\fotis\Desktop\IOT\assignment-1\azure-rest\iot-assignment-1\dashboard\obj\Debug\netcoreapp2.0\IotWork.pdb
+C:\Users\fotis\Desktop\IOT\assignment-1\azure-rest\iot-assignment-1\dashboard\obj\Debug\netcoreapp2.0\IotWork.genruntimeconfig.cache

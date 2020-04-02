@@ -135,7 +135,6 @@ static int cmd_start(int argc, char **argv){
         return 1;
     }
 
-    //char msg[] = "Messaggio da inviare ";
     xtimer_usleep(7);
     char msg[1024];
     int index=0;

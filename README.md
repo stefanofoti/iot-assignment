@@ -38,7 +38,7 @@ This is the third assignent of IOT course for Engineering in Computer Science, S
 
 Youtube demo: https://youtu.be/vmtwdrRTG7Y
 
-A little tutorial: 
+A little tutorial: https://www.hackster.io/sfoti96/connect-lora-devices-to-azure-iot-hub-43cadd
 
 
 # More

@@ -32,6 +32,14 @@ Youtube demo: https://youtu.be/LTq5vQ80o50
 
 A little tutorial: https://www.hackster.io/sfoti96/connect-a-riot-os-device-to-azure-iot-hub-fe2769
 
+# RIOT-OS based stations connected to LoRa Wan with The Things Network 
+
+This is the third assignent of IOT course for Engineering in Computer Science, Sapienza University of Rome.
+
+Youtube demo: https://youtu.be/vmtwdrRTG7Y
+
+A little tutorial: 
+
 
 # More
 

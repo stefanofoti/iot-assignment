@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>IoT Dashboard</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/datepicker3.css" rel="stylesheet">
+	<link href="css/styles.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+</head>
+<body>
+	
+	<!--/.sidebar-->
+		
+	<div class="col-lg-12 main">
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="#">
+					<em class="fa fa-home"></em>
+				</a></li>
+				<li class="active">Dashboard</li>
+			</ol>
+		</div><!--/.row-->
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Dashboard</h1>
+			</div>
+		</div><!--/.row-->
+	
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-info">
+					<div class="panel-heading">About</div>
+					<div class="panel-body">
+						<p>
+							This dashboard has been developed as an IoT assignment starting from some an HTML dashboard template under Medialoot license. The value shown are exposed by my REST API that you can find <a href="/swagger">here</a>. This REST interface takes messages from Azure sent to IoT Hub by MQTT devices. 
+						</p>
+					</div>
+				</div>
+			</div>	
+		</div>
+
+		<div class="panel panel-container">
+			<div class="row">
+				<div class="col-xs-4 col-md-2 col-lg-2 no-padding">
+					<div class="panel panel-teal panel-widget border-right">
+						<div class="row no-padding">
+							<p class="large" id="value-5">N/A</p>
+							<div class="text-muted">5 sec ago</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-4 col-md-2 col-lg-2 no-padding">
+					<div class="panel panel-blue panel-widget border-right">
+						<div class="row no-padding">
+							<p class="large" id="value-4">N/A</p>
+							<div class="text-muted">4 sec ago</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-4 col-md-2 col-lg-2 no-padding">
+					<div class="panel panel-orange panel-widget border-right">
+						<div class="row no-padding">
+							<p class="large" id="value-3">N/A</p>
+							<div class="text-muted">3 sec ago</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-2 col-lg-2 no-padding">
+					<div class="panel panel-orange panel-widget border-right">
+						<div class="row no-padding">
+							<p class="large" id="value-2">N/A</p>
+							<div class="text-muted">2 sec ago</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-2 col-lg-2 no-padding">
+					<div class="panel panel-orange panel-widget border-right">
+						<div class="row no-padding">
+							<p class="large" id="value-1">N/A</p>
+							<div class="text-muted">Currently</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-md-2 col-lg-2 no-padding">
+					<div class="panel panel-red panel-widget ">
+						<div class="row no-padding">
+							<div class="small" style="padding-top: 5px;">
+								<button type="button" id="update" class="btn btn-lg btn-primary">Cloud Update</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><!--/.row-->
+		</div>
+
+		<div class="panel panel-container">
+			<div class="row">
+				<div class="col-xs-4 col-md-2 col-lg-2 no-padding">
+					<div class="panel panel-teal panel-widget border-right">
+						<div class="row no-padding">
+							<p class="large" id="value-edge-5">N/A</p>
+							<div class="text-muted">5 sec ago</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-4 col-md-2 col-lg-2 no-padding">
+					<div class="panel panel-blue panel-widget border-right">
+						<div class="row no-padding">
+							<p class="large" id="value-edge-4">N/A</p>
+							<div class="text-muted">4 sec ago</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-4 col-md-2 col-lg-2 no-padding">
+					<div class="panel panel-orange panel-widget border-right">
+						<div class="row no-padding">
+							<p class="large" id="value-edge-3">N/A</p>
+							<div class="text-muted">3 sec ago</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-2 col-lg-2 no-padding">
+					<div class="panel panel-orange panel-widget border-right">
+						<div class="row no-padding">
+							<p class="large" id="value-edge-2">N/A</p>
+							<div class="text-muted">2 sec ago</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-2 col-lg-2 no-padding">
+					<div class="panel panel-orange panel-widget border-right">
+						<div class="row no-padding">
+							<p class="large" id="value-edge-1">N/A</p>
+							<div class="text-muted">Currently</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-md-2 col-lg-2 no-padding">
+					<div class="panel panel-red panel-widget ">
+						<div class="row no-padding">
+							<div class="small" style="padding-top: 5px;">
+								<button type="button" id="updateEdge" class="btn btn-lg btn-primary">Edge Update</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><!--/.row-->
+		</div>
+
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						Cloud Activity recognition						
+						<span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<canvas class="main-chart" id="chart-1" height="607" width="1823" style="width: 1459px; height: 486px;"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>		
+			
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						Edge Activity recognition						
+						<span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<canvas class="main-chart" id="chart-2" height="607" width="1823" style="width: 1459px; height: 486px;"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>	<!--/.main-->
+	  
+
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/chart.min.js"></script>
+	<script src="js/chart-data.js"></script>
+	<script src="js/easypiechart.js"></script>
+	<script src="js/easypiechart-data.js"></script>
+	<script src="js/bootstrap-datepicker.js"></script>
+	<script src="js/custom.js"></script>
+	
+	<script>
+
+	var endPoint = ""
+	
+	var chart1;
+
+	var chart2;
+
+	var result = [];
+	var resultEdge = [];
+	var xCloudValues = [];
+	var yCloudValues = [];
+	var xEdgeValues = [];
+	var yEdgeValues = [];
+
+
+	var nRequest = [];
+    var nResult =[];
+    var firstTime=true;
+	var names = [];
+	var urlList = [];
+	var labels = "";
+
+	function getActivities(){
+		var req = new XMLHttpRequest();
+		req.open("GET", endPoint+"/all", true);
+		req.onreadystatechange = function (oEvent) {
+			if (req.readyState === 4) {
+				if (req.status === 200) {
+					result=JSON.parse(req.response);
+					for(var i = 0; i < result.length; i++){
+						xCloudValues[i]=result[i].Id;
+						yCloudValues[i]=result[i].Status;
+					}
+
+				} else {
+					console.log("Error", req.statusText);
+				}
+			}
+		};
+		req.send(null);
+		updateSingleValues();
+		buildChart();
+    }
+
+	function getActivitiesEdge(){
+		var req = new XMLHttpRequest();
+		req.open("GET", endPoint+"/edge", true);
+		req.onreadystatechange = function (oEvent) {
+			if (req.readyState === 4) {
+				if (req.status === 200) {
+					resultEdge=JSON.parse(req.response);
+					for(var i = 0; i < resultEdge.length; i++){
+						xEdgeValues[i]=resultEdge[i].Id;
+						yEdgeValues[i]=resultEdge[i].Status;
+					}
+				} else {
+					console.log("Error", req.statusText);
+				}
+			}
+		};
+		req.send(null);
+		updateSingleEdgeValues();
+		buildChart();
+    }
+
+
+	window.onload = function () {
+		getActivities();
+	};
+
+	function updateSingleValues(){
+    if(result.length>4){
+    	$("#value-5").text(result[result.length-5].Status);
+    }
+    if(result.length>3){   
+	    $("#value-4").text(result[result.length-4].Status);
+	}
+    if(result.length>2){
+    	$("#value-3").text(result[result.length-3].Status);
+    }
+    if(result.length>1){
+    	$("#value-2").text(result[result.length-2].Status);
+    }
+    if(result.length>0){
+    	$("#value-1").text(result[result.length-1].Status);
+    }
+  }
+
+  function updateSingleEdgeValues(){
+    if(resultEdge.length>4){
+    	$("#value-edge-5").text(resultEdge[resultEdge.length-5].Status);
+    }
+    if(resultEdge.length>3){   
+	    $("#value-edge-4").text(resultEdge[resultEdge.length-4].Status);
+	}
+    if(resultEdge.length>2){
+    	$("#value-edge-3").text(resultEdge[resultEdge.length-3].Status);
+    }
+    if(resultEdge.length>1){
+    	$("#value-edge-2").text(resultEdge[resultEdge.length-2].Status);
+    }
+    if(resultEdge.length>0){
+    	$("#value-edge-1").text(resultEdge[resultEdge.length-1].Status);
+    }
+  }
+
+	function buildChart(){
+
+		var chartData1 = {
+			type: 'line',
+			data: {
+				xLabels: xCloudValues,
+				yLabels: ['', 'Standing', 'Car', 'Walking', 'Running'],
+				datasets: [{
+					label: 'Cloud dataset',
+					data: yCloudValues,
+					fill: true,
+					//borderColor: window.chartColors.red,
+					//backgroundColor: window.chartColors.red
+				}]
+			},
+			options: {
+				responsive: true,
+				title: {
+					display: true,
+					text: 'Activity recognition chart cloud based'
+				},
+				scales: {
+					xAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Seconds'
+						}
+					}],
+					yAxes: [{
+						type: 'category',
+						position: 'right',
+						display: true,
+						ticks: {
+							reverse: true
+						}
+					}]
+				}
+			}
+		};
+		
+		var chartData2 = {
+			type: 'line',
+			data: {
+				xLabels: xEdgeValues,
+				yLabels: ['', 'Standing', 'Car', 'Walking', 'Running'],
+				datasets: [{
+					label: 'Edge data',
+					data: yEdgeValues,
+					fill: true,
+					//borderColor: window.chartColors.red,
+					//backgroundColor: window.chartColors.red
+				}]
+			},
+			options: {
+				responsive: true,
+				title: {
+					display: true,
+					text: 'Activity recognition chart edge based'
+				},
+				scales: {
+					xAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Seconds'
+						}
+					}],
+					yAxes: [{
+						type: 'category',
+						position: 'right',
+						display: true,
+						ticks: {
+							reverse: true
+						}
+					}]
+				}
+			}
+		};
+
+		var ctx = document.getElementById('chart-1').getContext('2d');
+		window.myLine = new Chart(ctx, chartData1);
+		var ctxEdge = document.getElementById('chart-2').getContext('2d');
+		window.myLine = new Chart(ctxEdge, chartData2);
+	}
+
+		document.getElementById('update').addEventListener('click', function () {
+			getActivities();
+		});
+		document.getElementById('updateEdge').addEventListener('click', function () {
+			getActivitiesEdge();
+		});
+
+	</script>	
+
+</body></html>

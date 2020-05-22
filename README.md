@@ -48,7 +48,7 @@ A little tutorial: https://www.hackster.io/sfoti96/connect-lora-devices-to-azure
 
 This is the 4th assignent of IOT course for Engineering in Computer Science, Sapienza University of Rome.
 
-Youtube demo: https://youtu.be/vmtwdrRTG7Y
+Youtube demo: https://youtu.be/p0GTCQFEZGM
 
 A little tutorial: https://www.hackster.io/sfoti96/cloud-based-and-edge-based-activity-recognition-using-azure-893753
 
